@@ -10,7 +10,7 @@
     # Core tools
     git             # Version control
     zsh             # Z Shell
-    neovim          # Editor
+    neovim-nightly  # Editor
     bat             # Better 'cat' command
     fd              # Improved 'find' command
     eza             # Replacement for ls
