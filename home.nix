@@ -4,8 +4,10 @@
   home.stateVersion = "23.05"; # Set this to the current Home Manager version
   home.username = "yiyuanh";
   home.homeDirectory = builtins.getEnv "HOME";
+  home.sessionPath = ["$HOME/.local/bin/"];
 
   home.packages = with pkgs; [
+    # Core tools
     git             # Version control
     zsh             # Z Shell
     neovim          # Editor
@@ -24,10 +26,40 @@
     gzip            # Compression tool
     fzf             # Fuzzy finder
     jq              # JSON processor
+
+    # Build essentials
     cmake           # Cross-platform build system generator, needed by many plugins
     gnumake         # GNU Make build tool
     gcc             # GNU Compiler Collection
     pkg-config      # Helper tool used during compilation
+
+    # Python and tools
+    python311
+    python311Packages.black
+    python311Packages.pylint
+    python311Packages.pytest
+    python311Packages.virtualenv
+
+    # Node.js and tools
+    nodejs_20
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+
+    # Go and tools
+    go
+    gopls
+    golangci-lint
+
+    # Rust and tools
+    rustc
+    cargo
+    rust-analyzer
+
+    # C++ and tools
+    clang-tools
+
+    # Nerd font
+    fira-code-nerdfont
   ];
 
   programs.direnv = {
