@@ -55,11 +55,8 @@
     cargo
     rust-analyzer
 
-    # C++ and tools
-    clang-tools
-
     # Nerd font
-    fira-code-nerdfont
+    nerd-fonts.fira-code
   ];
 
   programs.direnv = {
