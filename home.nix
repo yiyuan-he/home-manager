@@ -3,7 +3,7 @@
 {
   home.stateVersion = "23.05"; # Set this to the current Home Manager version
   home.username = "yiyuanh";
-  home.homeDirectory = builtins.getEnv "HOME";
+  home.homeDirectory = "/Users/yiyuanh";
   home.sessionPath = ["$HOME/.local/bin/"];
 
   home.packages = with pkgs; [

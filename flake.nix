@@ -2,10 +2,12 @@
   description = "Home Manager configuration";
 
   inputs = {
-    # Specify the source of Home Manager and nixpkgs
+    # The main nixpkgs repository
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    
+    # The correct home-manager repository URL
     home-manager = {
-      url = "github:nix-home-manager/home-manager";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
