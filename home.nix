@@ -26,6 +26,7 @@
     gzip            # Compression tool
     fzf             # Fuzzy finder
     jq              # JSON processor
+    starship        # Prompt with a lot of features
 
     # Build essentials
     cmake           # Cross-platform build system generator, needed by many plugins
@@ -78,6 +79,8 @@
     initExtra = ''
       # Enable emacs-style keybindings
       bindkey -e
+      # Enable starship prompt
+      eval "$(starship init zsh)"
     '';
   };
 
