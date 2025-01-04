@@ -9,7 +9,8 @@
   home.packages = with pkgs; [
     # Core tools
     git             # Version control
-    zsh             # Z Shell
+    zsh             # Z shell
+    fish            # Fish shell
     neovim-nightly  # Editor
     bat             # Better 'cat' command
     fd              # Improved 'find' command
@@ -36,10 +37,7 @@
 
     # Python and tools
     python311
-    python311Packages.black
-    python311Packages.pylint
-    python311Packages.pytest
-    python311Packages.virtualenv
+    pyright
 
     # Node.js and tools
     nodejs_20
@@ -55,9 +53,6 @@
     rustc
     cargo
     rust-analyzer
-
-    # Nerd font
-    nerd-fonts.fira-code
   ];
 
   programs.direnv = {
@@ -65,28 +60,20 @@
     nix-direnv.enable = true;
   };
 
-  programs.zsh = {
+  programs.fish = {
     enable = true;
 
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    
     shellAliases = {
       vim = "nvim";
       ls = "eza";
     };
 
-    initExtra = ''
-      # Enable emacs-style keybindings
-      bindkey -e
-      # Enable starship prompt
-      eval "$(starship init zsh)"
+    interactiveShellInit = ''
+      # Make nix available in fish so we can find packages and use cli commands
+      set -gx PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
+      set -gx PATH /nix/var/nix/profiles/default/bin /nix/var/nix/profiles/default/sbin $PATH
+
+      starship init fish | source
     '';
   };
-
-  # Add aliases to your shell
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
 }
-
