@@ -73,6 +73,10 @@
       set -gx PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
       set -gx PATH /nix/var/nix/profiles/default/bin /nix/var/nix/profiles/default/sbin $PATH
 
+      # Set default editor to nvim
+      set -gx EDITOR nvim
+      set -gx VISUAL nvim
+
       # Configure fzf to use Everforest colors
       set -gx FZF_DEFAULT_OPTS '--color=fg:#d7c7a3,bg:#2b3339,hl:#e0af68,fg+:#d7c7a3,bg+:#353b41,hl+:#e0af68,info:#a7c080,prompt:#7fbbb3,pointer:#d27f99,marker:#d699b6,spinner:#83c092,header:#a0a8b0'
 
