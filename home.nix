@@ -17,8 +17,6 @@
     eza             # Replacement for ls
     tree            # Directory visualization
     ripgrep         # Fast searching
-    direnv          # For automatic environment switching
-    nix-direnv      # Better caching for direnv
     tmux            # Terminal multiplexer
     stow            # Dotfile management
     unzip           # Required for unpacking downloads
@@ -34,31 +32,7 @@
     gnumake         # GNU Make build tool
     gcc             # GNU Compiler Collection
     pkg-config      # Helper tool used during compilation
-
-    # Python and tools
-    python311
-    pyright
-
-    # Node.js and tools
-    nodejs_20
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-
-    # Go and tools
-    go
-    gopls
-    golangci-lint
-
-    # Rust and tools
-    rustc
-    cargo
-    rust-analyzer
   ];
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
 
   programs.fish = {
     enable = true;
@@ -81,6 +55,8 @@
       set -gx FZF_DEFAULT_OPTS '--color=fg:#d7c7a3,bg:#2b3339,hl:#e0af68,fg+:#d7c7a3,bg+:#353b41,hl+:#e0af68,info:#a7c080,prompt:#7fbbb3,pointer:#d27f99,marker:#d699b6,spinner:#83c092,header:#a0a8b0'
 
       starship init fish | source
+
+      /Users/yiyuanh/.local/bin/mise activate fish | source
     '';
   };
 }
