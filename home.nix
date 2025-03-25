@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     # Core tools
     git             # Version control
+    gh              # GitHub cli tool
     zsh             # Z shell
     fish            # Fish shell
     neovim-nightly  # Editor
@@ -26,42 +27,13 @@
     fzf             # Fuzzy finder
     jq              # JSON processor
     starship        # Prompt with a lot of features
-
-    # Build essentials
+    btop            # Resource monitor
+    zoxide          # Smarter cd
     cmake           # Cross-platform build system generator, needed by many plugins
-    gnumake         # GNU Make build tool
-    gcc             # GNU Compiler Collection
-    pkg-config      # Helper tool used during compilation
+
+    jdt-language-server # Java language server
+    lua-language-server # Lua language server
+    pyright             # Python language server
+    ruff                # Python linter
   ];
-
-  programs.fish = {
-    enable = true;
-
-    shellAliases = {
-      vim = "nvim";
-      ls = "eza";
-    };
-
-    interactiveShellInit = ''
-      # Make nix available in fish so we can find packages and use cli commands
-      set -gx PATH $HOME/.nix-profile/bin $HOME/.nix-profile/sbin $PATH
-      set -gx PATH /nix/var/nix/profiles/default/bin /nix/var/nix/profiles/default/sbin $PATH
-
-      # Set default editor to nvim
-      set -gx EDITOR nvim
-      set -gx VISUAL nvim
-
-      # Configure fzf to use catppuccin colors
-      set -Ux FZF_DEFAULT_OPTS "\
-      --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-      --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-      --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-      --color=selected-bg:#45475a \
-      --multi"
-
-      starship init fish | source
-
-      /Users/yiyuanh/.local/bin/mise activate fish | source
-    '';
-  };
 }
